@@ -18,5 +18,10 @@ class Products_details extends Model{
 	{
 		echo "issue";
 	}
+	
+	public function sub_branch()
+	{
+		echo "issue";
+	}
 
 }
