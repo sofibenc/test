@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>passy - a jQuery plugin to rate and generate passwords</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-passy.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+    <h1>Exemple pour tester la robustesse du mot de passe choisi</h1>
+
+    <p><strong></strong>  <strong></strong> .</p>
+
+    <div id="form">
+        <input type="text" id="input" placeholder="Tapez votre mot de passe" />
+        <a href="javascript:void(0);" id="generate">g&eacuten&eacuterer</a>
+        <span id="output">...</span>
+    </div>
+
+ <script type="text/javascript">
+    var $input = $('#input');
+    var $output = $('#output');
+
+    $.passy.requirements.length.min = 4;
+
+    var feedback = [
+        { color: '#c00', text: 'pauvre' },
+        { color: '#c80', text: 'correct' },
+        { color: '#0c0', text: 'Bonne' },
+        { color: '#0c0', text: 'Excellente!' }
+   ];
+
+    $input.passy(function(strength, valid) {
+        $output.text(feedback[strength].text);
+        $output.css('background-color', feedback[strength].color);
+
+        if(valid) $input.css('border-color', 'green');
+        else $input.css('border-color', 'red');
+    });
+
+    $('#generate').click(function() {
+        $input.passy('generate', 8);
+    });
+</script>
+
+</body>
+</html>
