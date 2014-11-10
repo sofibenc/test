@@ -8,5 +8,10 @@ class Products_details extends Model{
 	{
 		echo "test";
 	}
+	
+	public function bug2()
+	{
+		echo "test2";
+	}
 
 }
